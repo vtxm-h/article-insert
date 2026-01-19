@@ -11,34 +11,20 @@ class ArticleInsertArticleOptions extends Backend
 {
     public function getArticlesByPage(DataContainer $dc): array
     {
-        $rootPageId = 0;
+        $pageId = $this->extractPageId($dc);
 
-        if ($dc->activeRecord && (int) ($dc->activeRecord->page ?? 0) > 0) {
-            $rootPageId = (int) $dc->activeRecord->page;
-        }
-
-        if ($rootPageId <= 0) {
-            $rootPageId = (int) Input::post('page', true);
-        }
-
-        if ($rootPageId <= 0) {
+        if ($pageId <= 0) {
             return [];
         }
 
         $stmt = Database::getInstance()
-            ->prepare("
-                SELECT a.id, a.title, a.inColumn, p.title AS pageTitle
-                FROM tl_article a
-                INNER JOIN tl_page p ON p.id = a.pid
-                WHERE (p.id = ? OR p.rootId = ?)
-                ORDER BY p.sorting, a.sorting
-            ")
-            ->execute($rootPageId, $rootPageId);
+            ->prepare('SELECT id, title, inColumn FROM tl_article WHERE pid=? ORDER BY sorting')
+            ->execute($pageId);
 
         $options = [];
 
         while ($stmt->next()) {
-            $label = $stmt->pageTitle . ' → ' . $stmt->title;
+            $label = $stmt->title;
 
             if ($stmt->inColumn) {
                 $label .= ' [' . $stmt->inColumn . ']';
@@ -48,5 +34,31 @@ class ArticleInsertArticleOptions extends Backend
         }
 
         return $options;
+    }
+
+    private function extractPageId(DataContainer $dc): int
+    {
+        $val = null;
+
+        if ($dc->activeRecord && isset($dc->activeRecord->page)) {
+            $val = $dc->activeRecord->page;
+        }
+
+        if (empty($val)) {
+            $val = Input::post('page', true);
+        }
+
+        if (is_array($val)) {
+            $val = $val[0] ?? 0;
+        }
+
+        if (is_string($val) && str_starts_with($val, 'a:')) {
+            $tmp = @unserialize($val, ['allowed_classes' => false]);
+            if (is_array($tmp)) {
+                $val = $tmp[0] ?? 0;
+            }
+        }
+
+        return (int) $val;
     }
 }
