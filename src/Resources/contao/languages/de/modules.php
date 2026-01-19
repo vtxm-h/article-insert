@@ -1,10 +1,10 @@
 <?php
 
-// Gruppentitel (sichtbar im Backend)
-$GLOBALS['TL_LANG']['FMD']['article_insert_group'] = 'Artikel-Insert';
-
-// Modul
-$GLOBALS['TL_LANG']['FMD']['article_insert_group']['article_insert'] = [
-    'Artikel einfügen',
-    'Gibt die Inhaltselemente eines Artikels aus.'
+// Modultitel/-beschreibung (array)
+$GLOBALS['TL_LANG']['FMD']['article_insert'] = [
+  'Artikel einfügen',
+  'Gibt die Inhaltselemente eines Artikels aus.',
 ];
+
+// Gruppentitel (string) – optional, nur wenn du eine eigene Gruppe verwendest
+$GLOBALS['TL_LANG']['FMD']['article_insert_group'] = 'Artikel-Insert';
