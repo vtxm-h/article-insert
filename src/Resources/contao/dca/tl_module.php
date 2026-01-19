@@ -9,7 +9,12 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['page'] = [
     'label'     => &$GLOBALS['TL_LANG']['tl_module']['page'],
     'exclude'   => true,
     'inputType' => 'pageTree',
-    'eval'      => ['mandatory' => true, 'fieldType' => 'radio', 'tl_class' => 'w50'],
+    'eval'      => [
+        'mandatory' => true,
+        'fieldType' => 'radio',
+        'submitOnChange' => true,
+        'tl_class' => 'w50',
+    ],
     'sql'       => "int(10) unsigned NOT NULL default 0",
 ];
 
@@ -18,6 +23,11 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['article'] = [
     'exclude'          => true,
     'inputType'        => 'select',
     'options_callback' => [ArticleOptions::class, 'getArticlesByPage'],
-    'eval'             => ['mandatory' => true, 'chosen' => true, 'includeBlankOption' => true, 'tl_class' => 'w50'],
+    'eval'             => [
+        'mandatory' => true,
+        'chosen' => true,
+        'includeBlankOption' => true,
+        'tl_class' => 'w50',
+    ],
     'sql'              => "int(10) unsigned NOT NULL default 0",
 ];
