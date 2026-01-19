@@ -1,27 +1,32 @@
 <?php
 
-namespace ArticleInsert\Dca;
-
 use Contao\Backend;
-use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\Database;
 use Contao\DataContainer;
+use Contao\Input;
 
 class ArticleOptions extends Backend
 {
     public function getArticlesByPage(DataContainer $dc): array
     {
-        if (!$dc->activeRecord) {
-            return [];
+        $pageId = 0;
+
+        // 1) bestehender Datensatz (Modul bearbeiten)
+        if ($dc->activeRecord && $dc->activeRecord->page) {
+            $pageId = (int) $dc->activeRecord->page;
         }
 
-        $pageId = (int) ($dc->activeRecord->page ?? 0);
+        // 2) neuer Datensatz / submitOnChange
+        if ($pageId <= 0) {
+            $pageId = (int) Input::post('page', true);
+        }
+
         if ($pageId <= 0) {
             return [];
         }
 
         $stmt = Database::getInstance()
-            ->prepare("SELECT id, title, inColumn FROM tl_article WHERE pid=? ORDER BY sorting")
+            ->prepare('SELECT id, title, inColumn FROM tl_article WHERE pid=? ORDER BY sorting')
             ->execute($pageId);
 
         $options = [];
@@ -39,4 +44,3 @@ class ArticleOptions extends Backend
         return $options;
     }
 }
-
