@@ -1,6 +1,7 @@
 {
   "name": "article/insert",
   "type": "contao-bundle",
+  "license": "MIT",
   "require": {
     "php": "^8.0",
     "contao/core-bundle": "^4.13",
