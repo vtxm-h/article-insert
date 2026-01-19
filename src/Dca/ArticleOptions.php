@@ -2,33 +2,41 @@
 
 namespace ArticleInsert\Dca;
 
-use Contao\ArticleModel;
+use Contao\Backend;
+use Contao\CoreBundle\ServiceAnnotation\Callback;
+use Contao\Database;
 use Contao\DataContainer;
 
-class ArticleOptions
+class ArticleOptions extends Backend
 {
     public function getArticlesByPage(DataContainer $dc): array
     {
+        if (!$dc->activeRecord) {
+            return [];
+        }
+
+        $pageId = (int) ($dc->activeRecord->page ?? 0);
+        if ($pageId <= 0) {
+            return [];
+        }
+
+        $stmt = Database::getInstance()
+            ->prepare("SELECT id, title, inColumn FROM tl_article WHERE pid=? ORDER BY sorting")
+            ->execute($pageId);
+
         $options = [];
 
-        if (!$dc->activeRecord || !$dc->activeRecord->page) {
-            return $options;
-        }
+        while ($stmt->next()) {
+            $label = $stmt->title;
 
-        $articles = ArticleModel::findBy(
-            ['pid=?'],
-            [$dc->activeRecord->page],
-            ['order' => 'sorting']
-        );
+            if ($stmt->inColumn) {
+                $label .= ' [' . $stmt->inColumn . ']';
+            }
 
-        if (null === $articles) {
-            return $options;
-        }
-
-        foreach ($articles as $article) {
-            $options[$article->id] = $article->title;
+            $options[(int) $stmt->id] = $label;
         }
 
         return $options;
     }
 }
+
