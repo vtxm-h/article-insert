@@ -5,7 +5,7 @@ use Contao\Database;
 use Contao\DataContainer;
 use Contao\Input;
 
-class ArticleOptions extends Backend
+class ArticleInsertArticleOptions extends Backend
 {
     public function getArticlesByPage(DataContainer $dc): array
     {
