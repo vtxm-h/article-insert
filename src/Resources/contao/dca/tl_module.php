@@ -1,18 +1,8 @@
 <?php
 
-use ArticleInsert\Dca\ArticleInsertArticleOptions;
-
-/*
- * Palette
- */
 $GLOBALS['TL_DCA']['tl_module']['palettes']['article_insert']
-    = '{title_legend},name,headline,type;'
-    . '{config_legend},page,article;'
-    . '{template_legend:hide},customTpl';
+    = '{title_legend},name,headline,type;{config_legend},page,article;{template_legend:hide},customTpl;';
 
-/*
- * Feld: Seite (Root/PageTree)
- */
 $GLOBALS['TL_DCA']['tl_module']['fields']['page'] = [
     'label'     => &$GLOBALS['TL_LANG']['tl_module']['page'],
     'exclude'   => true,
@@ -23,22 +13,22 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['page'] = [
         'submitOnChange' => true,
         'tl_class'       => 'w50',
     ],
-    'sql'       => "int(10) unsigned NOT NULL default 0",
+    'sql'       => "int(10) unsigned NOT NULL default '0'",
 ];
 
-/*
- * Feld: Artikel (abhängig von Seite)
- */
 $GLOBALS['TL_DCA']['tl_module']['fields']['article'] = [
     'label'            => &$GLOBALS['TL_LANG']['tl_module']['article'],
     'exclude'          => true,
     'inputType'        => 'select',
-    'options_callback' => [ArticleInsertArticleOptions::class, 'getArticlesByPage'],
-    'eval'             => [
-        'mandatory'            => true,
-        'chosen'               => true,
-        'includeBlankOption'   => true,
-        'tl_class'             => 'w50',
+    'options_callback' => [
+        'ArticleInsert\\Dca\\ArticleInsertArticleOptionsCallback',
+        'getArticlesByPage'
     ],
-    'sql'              => "int(10) unsigned NOT NULL default 0",
+    'eval'             => [
+        'mandatory'           => true,
+        'chosen'              => true,
+        'includeBlankOption'  => true,
+        'tl_class'            => 'w50',
+    ],
+    'sql'              => "int(10) unsigned NOT NULL default '0'",
 ];
