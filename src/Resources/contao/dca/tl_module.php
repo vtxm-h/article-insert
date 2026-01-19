@@ -13,22 +13,19 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['page'] = [
         'submitOnChange' => true,
         'tl_class'       => 'w50',
     ],
-    'sql'       => "int(10) unsigned NOT NULL default '0'",
+    'sql'       => "int(10) unsigned NOT NULL default 0",
 ];
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['article'] = [
     'label'            => &$GLOBALS['TL_LANG']['tl_module']['article'],
     'exclude'          => true,
     'inputType'        => 'select',
-    'options_callback' => [
-        'ArticleInsert\\Dca\\ArticleInsertArticleOptions',
-        'getArticlesByPage'
-    ],
+    'options_callback' => ['ArticleInsert\\Dca\\ArticleInsertArticleOptions', 'getArticlesByPage'],
     'eval'             => [
-        'mandatory'           => true,
-        'chosen'              => true,
-        'includeBlankOption'  => true,
-        'tl_class'            => 'w50',
+        'mandatory'          => true,
+        'chosen'             => true,
+        'includeBlankOption' => true,
+        'tl_class'           => 'w50',
     ],
-    'sql'              => "int(10) unsigned NOT NULL default '0'",
+    'sql'              => "int(10) unsigned NOT NULL default 0",
 ];
