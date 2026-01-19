@@ -21,7 +21,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['article'] = [
     'exclude'          => true,
     'inputType'        => 'select',
     'options_callback' => [
-        'ArticleInsert\\Dca\\ArticleInsertArticleOptionsCallback',
+        'ArticleInsert\\Dca\\ArticleInsertArticleOptions',
         'getArticlesByPage'
     ],
     'eval'             => [
