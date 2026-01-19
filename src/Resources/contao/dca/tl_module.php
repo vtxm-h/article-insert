@@ -1,7 +1,7 @@
 <?php
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['article_insert']
-    = '{title_legend},name,headline,type;{config_legend},page,article;{template_legend:hide},customTpl;';
+    = '{title_legend},name,headline,type;{config_legend},page,article;{template_legend:hide},customTpl';
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['page'] = [
     'label'     => &$GLOBALS['TL_LANG']['tl_module']['page'],
@@ -13,7 +13,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['page'] = [
         'submitOnChange' => true,
         'tl_class'       => 'w50',
     ],
-    'sql'       => "int(10) unsigned NOT NULL default 0",
+    'sql' => "int(10) unsigned NOT NULL default 0",
 ];
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['article'] = [
@@ -22,10 +22,9 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['article'] = [
     'inputType'        => 'select',
     'options_callback' => ['ArticleInsert\\Dca\\ArticleInsertArticleOptions', 'getArticlesByPage'],
     'eval'             => [
-        'mandatory'          => true,
-        'chosen'             => true,
-        'includeBlankOption' => true,
-        'tl_class'           => 'w50',
+        'mandatory' => true,
+        'chosen'    => true,
+        'tl_class'  => 'w50',
     ],
-    'sql'              => "int(10) unsigned NOT NULL default 0",
+    'sql' => "int(10) unsigned NOT NULL default 0",
 ];
