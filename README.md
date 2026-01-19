@@ -8,8 +8,14 @@ Ein einfaches Frontend-Modul für Contao, mit dem die **Inhaltselemente eines be
 - Eigenes Frontend-Modul
 - Eigenes Template (`mod_article_insert`)
 
+## Kompatibilität
+- Contao 4.13+
+- PHP 8.0+
+
 ## Installation
 Über den Contao Manager oder per Composer:
 
 ```bash
 composer require article/insert
+
+
