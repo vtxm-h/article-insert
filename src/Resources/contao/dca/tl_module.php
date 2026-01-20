@@ -1,7 +1,6 @@
 <?php
 
 use ArticleInsert\Dca\ArticleOptions;
-use Contao\CoreBundle\DataContainer\PaletteManipulator;
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['article_insert']
     = '{title_legend},name,headline,type;{config_legend},page,article;{template_legend:hide},customTpl;';
@@ -23,7 +22,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['article'] = [
     'label'            => &$GLOBALS['TL_LANG']['tl_module']['article'],
     'exclude'          => true,
     'inputType'        => 'select',
-    'options_callback' => [\ArticleInsert\Dca\ArticleOptions::class, 'getArticlesByPage'],
+    'options_callback' => [ArticleOptions::class, 'getArticlesByPage'],
     'eval'             => [
         'mandatory'          => true,
         'chosen'             => true,
