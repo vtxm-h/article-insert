@@ -21,3 +21,19 @@ Backend → Themes → Frontend Modules
 4. Save the module (required to populate the article list)
 5. Select the article
 6. Place the module in a layout section or template slot
+
+Note: In Contao 4.13, dependent select fields require a save/reload step.
+This extension intentionally avoids Ajax to keep the implementation stable and predictable.
+
+## Template
+
+mod_article_insert.html5
+
+## Compatibility
+
+Contao 4.13
+PHP 8.0+
+
+## License
+
+MIT
