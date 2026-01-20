@@ -5,9 +5,10 @@ services:
     public: false
 
   ArticleInsert\:
-    resource: '../../*'
-    exclude: '../../{DependencyInjection,Resources,Tests}'
+    resource: ../../
+    exclude: ../../{DependencyInjection,Resources,Tests}
 
   ArticleInsert\Controller\:
-    resource: '../../Controller'
+    resource: ../../Controller
     tags: ['controller.service_arguments']
+    public: true
