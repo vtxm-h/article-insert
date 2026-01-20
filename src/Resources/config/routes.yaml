@@ -1,0 +1,4 @@
+article_insert_articles:
+  path: /contao/article_insert/articles
+  controller: ArticleInsert\Controller\Backend\ArticleOptionsController
+  methods: [POST]
