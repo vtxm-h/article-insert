@@ -12,7 +12,7 @@ Install via Contao Manager or Composer:
 composer require article/insert
 ```
 
-#Usage
+## Usage
 Backend → Themes → Frontend Modules
 
 1. Create a new frontend module
