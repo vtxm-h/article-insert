@@ -1,5 +1,8 @@
 <?php
 
+use ArticleInsert\Dca\ArticleInsertArticleOptions;
+use Contao\CoreBundle\DataContainer\PaletteManipulator;
+
 $GLOBALS['TL_DCA']['tl_module']['palettes']['article_insert']
     = '{title_legend},name,headline,type;{config_legend},page,article;{template_legend:hide},customTpl;';
 
@@ -8,24 +11,24 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['page'] = [
     'exclude'   => true,
     'inputType' => 'pageTree',
     'eval'      => [
-        'mandatory' => true,
-        'fieldType' => 'radio',
-        'submitOnChange' => false,
-        'tl_class'  => 'w50',
+        'mandatory'      => true,
+        'fieldType'      => 'radio',
+        'submitOnChange' => true,
+        'tl_class'       => 'w50',
     ],
     'sql'       => "int(10) unsigned NOT NULL default 0",
 ];
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['article'] = [
-    'label'     => &$GLOBALS['TL_LANG']['tl_module']['article'],
-    'exclude'   => true,
-    'inputType' => 'select',
-    'options'   => [],
-    'eval'      => [
-        'mandatory' => true,
-        'chosen' => true,
+    'label'            => &$GLOBALS['TL_LANG']['tl_module']['article'],
+    'exclude'          => true,
+    'inputType'        => 'select',
+    'options_callback' => [ArticleInsertArticleOptions::class, 'getArticlesByPage'],
+    'eval'             => [
+        'mandatory'          => true,
+        'chosen'             => true,
         'includeBlankOption' => true,
-        'tl_class' => 'w50',
+        'tl_class'           => 'w50',
     ],
-    'sql'       => "int(10) unsigned NOT NULL default 0",
+    'sql'              => "int(10) unsigned NOT NULL default 0",
 ];
