@@ -11,6 +11,7 @@ Install via Contao Manager or Composer:
 ```bash
 composer require article/insert
 ```
+
 #Usage
 Backend → Themes → Frontend Modules
 
