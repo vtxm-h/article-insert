@@ -1,6 +1,6 @@
 {
   "name": "vtxm-h/article-insert",
-  "description": "Contao 4 Frontend module that allows articles to be embedded into layouts or other pages.",
+  "description": "Contao 4.13 Frontend module that allows articles to be embedded into layouts or other pages.",
   "type": "contao-bundle",
   "license": "MIT",
   "require": {
