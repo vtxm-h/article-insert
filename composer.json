@@ -8,6 +8,7 @@
     "contao/core-bundle": "^4.13",
     "contao/manager-plugin": "^2.0"
   },
+  "type": "contao-bundle",
   "autoload": {
     "psr-4": { 
       "Vendor\\ArticleInsertBundle\\": "src/" }
