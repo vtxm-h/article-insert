@@ -1,5 +1,5 @@
 {
-  "name": "article/insert",
+  "name": "vtxm-h/article-insert",
   "type": "contao-bundle",
   "license": "MIT",
   "require": {
