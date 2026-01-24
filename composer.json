@@ -1,5 +1,6 @@
 {
   "name": "vtxm-h/article-insert",
+  "description": "Contao 4 Frontend module that allows articles to be embedded into layouts or other pages.",
   "type": "contao-bundle",
   "license": "MIT",
   "require": {
@@ -8,9 +9,10 @@
     "contao/manager-plugin": "^2.0"
   },
   "autoload": {
-    "psr-4": { "ArticleInsert\\": "src/" }
+    "psr-4": { 
+      "Vendor\\ArticleInsertBundle\\": "src/" }
   },
   "extra": {
-    "contao-manager-plugin": "ArticleInsert\\ContaoManager\\Plugin"
+    "contao-manager-plugin": "Vendor\\ArticleInsertBundle\\ContaoManager\\Plugin"
   }
 }
