@@ -1,8 +1,8 @@
 <?php
 
-namespace ArticleInsert\ContaoManager;
+namespace Vendor\ArticleInsertBundle\ContaoManager;
 
-use ArticleInsert\ArticleInsertBundle;
+use Vendor\ArticleInsertBundle\ArticleInsertBundle;
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
