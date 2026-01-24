@@ -1,6 +1,6 @@
 <?php
 
-namespace ArticleInsert\Dca;
+namespace Vendor\ArticleInsertBundle\Dca;
 
 use Contao\Backend;
 use Contao\Database;
