@@ -1,6 +1,6 @@
 <?php
 
-use ArticleInsert\Dca\ArticleOptions;
+use Vendor\ArticleInsertBundle\Dca\ArticleOptions;
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['article_insert']
     = '{title_legend},name,headline,type;{config_legend},page,article;{template_legend:hide},customTpl;';
