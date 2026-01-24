@@ -1,6 +1,6 @@
 <?php
 
-namespace Vendor\ArticleInsert;
+namespace Vendor\ArticleInsertBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
