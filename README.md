@@ -4,12 +4,19 @@ Frontend module for Contao that outputs the **published content elements of a se
 
 Designed for theme- and template-driven setups (e.g. predefined layout blocks), where structure is handled by the theme and content is managed via Contao articles.
 
-## Installation
+## Installation (via Composer / Contao Manager)
 
-Install via Contao Manager or Composer:
+Add the repository to your **Contao project** `composer.json` (root of the Contao installation):
 
-```bash
-composer require article/insert
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/vtxm-h/article-insert"
+    }
+  ]
+}
 ```
 
 ## Usage
