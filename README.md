@@ -4,21 +4,6 @@ Frontend module for Contao that outputs the **published content elements of a se
 
 Designed for theme- and template-driven setups (e.g. predefined layout blocks), where structure is handled by the theme and content is managed via Contao articles.
 
-## Installation (via Composer / Contao Manager)
-
-Add the repository to your **Contao project** `composer.json` (root of the Contao installation):
-
-```json
-{
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/vtxm-h/article-insert"
-    }
-  ]
-}
-```
-
 ## Usage
 Backend → Themes → Frontend Modules
 
@@ -35,6 +20,21 @@ This extension intentionally avoids Ajax to keep the implementation stable and p
 ## Template
 
 mod_article_insert.html5
+
+## Installation (via Composer / Contao Manager)
+
+Add the repository to your **Contao project** `composer.json` (root of the Contao installation):
+
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/vtxm-h/article-insert"
+    }
+  ]
+}
+```
 
 ## Compatibility
 
